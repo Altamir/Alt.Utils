@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>xamarinios10;monoandroid81;net45</TargetFrameworks>
+    <Configurations>Debug;Release</Configurations>
+    <Platforms>AnyCPU</Platforms>
+    <!-- Work around MSBuild bug when building from commandline: https://github.com/Microsoft/msbuild/issues/2274 -->
+    <AddSyntheticProjectReferencesForSolutionDependencies>false</AddSyntheticProjectReferencesForSolutionDependencies>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>    
+    <Version>0.0.1</Version>
+    <Authors>Altamir Benkenstein</Authors>
+    <Company>Rodosoft Tecnologia</Company>
+    <Description>Classes e Extensions de uso geral.</Description>
+    <PackageIconUrl>https://i.imgur.com/UmAwWKq.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <!-- Framework specific items -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.16299'">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- This package resolves some multi targeting issues -->
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="all" />
+  </ItemGroup>
+  
+  <Import Project="$(MSBuildSDKExtrasTargets)" />
+  
+</Project>
